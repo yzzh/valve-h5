@@ -1,0 +1,81 @@
+@import '../../global.less';
+
+a {
+  text-decoration: none;
+}
+.index {
+    overflow: auto;
+    margin: 0 18px;
+    .page-ul {
+        padding-top: 6px;
+        .page-li {
+            width: 50%;
+            display: inline-block;
+            padding: 3px;
+            box-sizing: border-box;
+            font-size: 15px;
+            .page-a {
+            color: #494949;
+            background-color: #f6f6f6;
+            display: block;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 2px;
+            }
+        }
+    }
+    .recommend-feed{
+        .feed-item {
+            display: block;
+            padding: 25px 0;
+            color: #494949;
+            .feed-content {
+                padding-bottom: 10px;
+                overflow: hidden;
+                .feed-img {
+                width: 25.6%;
+                float: right;
+                margin-left: 25px;
+                height: 73px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                img {
+                    width: 72px;
+                }
+                }
+                .feed-title {
+                text-align: justify;
+                font-size: 17px;
+                font-weight: 500;
+                line-height: 1.41;
+                color: #494949;
+                margin-bottom: 6px;
+                }
+                .feed-desc {
+                text-align: justify;
+                color: #aaa;
+                font-size: 12px;
+                line-height: 1.5;
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                }
+            }
+            .feed-author {
+                font-size: 12px;
+                color: #ccc;
+                .author-name{
+                float: left;
+                }
+                .author-source {
+                float: right;
+                }
+            }
+            }
+    }
+}
+
+
+
