@@ -18,8 +18,8 @@
                                 </svg>
                             </span>
                         </div>
-                        <div class="star-color-red">
-                            <span class="rating-star-color" v-for="n in getStars(item.rating.value)">
+                        <div class="star-color-red" :style="{width: `${item.rating.value/10*100}%`}">
+                            <span class="rating-star-color" v-for="n in 5">
                                 <svg class="icon" aria-hidden="true">
                                     <use xlink:href="#icon-xingxing"></use>
                                 </svg>
