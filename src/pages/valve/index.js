@@ -11,7 +11,7 @@ export default {
         contentHeight:'',// 页面中除去header高度的页面高度
         recommends: [],
         loadingStatus: 0, // 0 可以加载  1  正在加载  2  加载完成   -1   无数据
-        currentTime: new Date().getTime(),
+        currentTime: new Date().getTime(), // 当天日期的时间戳
         pageList
         }
     },
@@ -39,15 +39,16 @@ export default {
                 next_date = format(new Date(this.currentTime), 'yyyy-MM-dd');
                 this.currentTime -= oneDayTime;
             }
+            // 每次请求数据都执行此函数，区别在于第一次向next_date传空字符串，第二次及以后传的是当天日期的时间戳，服务端返回的是当天的前一天
             getRecommend({
                 next_date
             })
                 //.then表示数据获取成功以后。相当于success()
                 .then(res => { // res即response意思，一个变量名，这里代表获取成功以后返回的数据
-                    console.log('下拉加载的数据',res);
-                    //将this.list(data声明的数组属性list)和list(变量list)展开然后合并
+                    // console.log('下拉加载的数据',res);
+                    //将this.recommends(data声明的数组属性)和数据recommend_feeds展开然后合并
                     this.recommends = [...this.recommends, ...res.recommend_feeds];
-                    console.log('下拉加载后合并的数据',this.recommends);
+                    // console.log('下拉加载后合并的数据',this.recommends);
                     let dataLength = res.recommend_feeds.length;
                     if (!dataLength && next_date === '') {
                         this.loadingStatus = -1; //第一次取就无数据,return出去，不再执行后面的语句，解释状态码的意义

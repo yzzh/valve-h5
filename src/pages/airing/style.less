@@ -1,4 +1,5 @@
 @import '../../global.less';
+@import '../../base.less';
 
 .banner-cover{
     position: relative;
@@ -30,22 +31,22 @@
             .btn-download{
                 color: #fff;
                 font-weight: 700;
-                background-color: #42bd56;
+                background-color: @link-color;
                 padding: 7px 14px;
                 border-radius: 3px;
                 margin-right: 6px;
             }
             .btn-open{
-                color: #42bd56;
-                border: 1px solid #42bd56;
+                color: @link-color;
+                border: 1px solid @link-color;
                 padding: 5px 16px;
                 border-radius: 3px;
             }
         }
     }
 }
-.status-editor:after,
-.status-item:after{
+// .status-editor .status-item伪类公用的样式
+.after-public{
     content: '';
     height: 1px;
     width: 100%;
@@ -54,22 +55,32 @@
     bottom: 0;
     left: 0;
 }
+
 .status-cover{
     margin: 0 18px;
     .status-editor{
         padding: 10px 18px;
         position: relative;
         margin: 0 -18px; // 这段是为了配合由:after创造出来的border-bottom能够width:100%
+        height: 40px;
+        line-height: 2;
+        color: #aaa;
+        &:after{
+            .after-public;
+        }
+        .editor-left{
+            float: left;
+            line-height: 2.5;
+        }
+        .editor-right{
+            float: right;
+        }
+        .editor-icon{
+            font-size: 20px;
+            margin-right: 10px;
+            line-height: 2;
+        }
     }
-    // :after{
-    //     content: '';
-    //     height: 1px;
-    //     width: 100%;
-    //     background-color: #e8e8e8;
-    //     position: absolute;
-    //     bottom: 0;
-    //     left: 0;
-    // }
     .status-list{
         overflow: hidden;
         .status-item{
@@ -79,9 +90,9 @@
             padding-left: 50px;
             text-align: left;
             position: relative;
-            // :after{
-            //     content: '';
-            // }
+            &:after{
+                .after-public;
+            }
             .status-top{
                 .top-author{
                     .author-avatar{
@@ -115,18 +126,21 @@
                     font-size: 17px;
                     padding-top: 10px;
                     .text-title{
-                        color: #42bd56;
+                        color: @link-color;
                     }
                     .text-domain{
-                        color: #42bd56;
+                        color: @link-color;
                     }
                 }
             }
             .status-img{
                 padding-top: 15px;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+                max-height: 300px;
+                overflow: hidden;
+                img{
+                    max-width: 100%;
+                    height: auto;
+                }
             }
             .status-card{
                 padding: 15px;
@@ -166,12 +180,23 @@
                 padding-top: 13px;
                 font-size: 14px;
                 color: #ccc;
+                position: relative;
+                .status-bottom-icon{
+                    margin-right: 10px;
+                    color: #aaa;
+                }
+                .bottom-icon-more{
+                    position: absolute;
+                    right: 0;
+                    color: #aaa;
+                    font-size: 20px;
+                }
             }
         }
         .btn-more-airing{
             padding: 15px 0;
             font-size: 16px;
-            color: #42bd56;
+            color: @link-color;
             border: none;
             background-color: #fff;
             outline: none;
@@ -199,14 +224,9 @@
         }
     }
     a{
-        color: #42bd56;
+        color: @link-color;
     }
 }
 
 
-.icon {
-   width: 1em; height: 1em;
-   vertical-align: -0.15em;
-   fill: currentColor;
-   overflow: hidden;
-}
+

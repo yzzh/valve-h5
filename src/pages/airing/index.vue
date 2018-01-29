@@ -15,20 +15,20 @@
         <section class="status-cover">
             <div class="status-editor">
                 <!--用户头像-->
-                <span>
+                <span class="editor-left editor-icon">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-yonghutouxiang"></use>
                     </svg>
                 </span>
-                <span>登录发广播</span>
+                <span class="editor-left">登录发广播</span>
                 <!--笔-->
-                <span>
+                <span class="editor-right editor-icon">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-iconset0137"></use>
                     </svg>
                 </span>
                 <!--照相机-->
-                <span>
+                <span class="editor-right editor-icon">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-camera_icon"></use>
                     </svg>
@@ -60,13 +60,8 @@
                         </div>
                     </div>
                     <!--包含大图片（若status.card === null则此项包含））-->
-                    <div class="status-img" v-if="item.card === null && item.images[0] !== undefined"
-                        :style="{
-                            backgroundImage: `url(${item.images[0].normal.url})`,
-                            height: `${item.images[0].normal.height}px`,
-                            width: `${item.images[0].normal.width}px`
-                        }">
-                        <!--<img :src="item.images[0].normal.url" alt="">-->
+                    <div class="status-img" v-if="item.card === null && item.images[0] !== undefined">
+                        <img :src="item.images[0].normal.url" alt="">
                     </div>
                     <!--包含卡片文字及图片（若status.card !== null则此项包含）'）-->
                     <div class="status-card" v-if="item.card !== null">
@@ -87,25 +82,25 @@
                     </div>
                     <!--包含点赞，评论，分享，更多-->
                     <div class="status-bottom">
-                        <span>
+                        <span class="status-bottom-icon">
                             <svg class="icon" aria-hidden="true">
                                 <use xlink:href="#icon-chakandianzan"></use>
                             </svg>
                             {{item.like_count}}
                         </span>
-                        <span>
+                        <span class="status-bottom-icon">
                             <svg class="icon" aria-hidden="true">
                                 <use xlink:href="#icon-pinglun"></use>
                             </svg>
                             {{item.comments_count}}
                         </span>
-                        <span>
+                        <span class="status-bottom-icon">
                             <svg class="icon" aria-hidden="true">
                                 <use xlink:href="#icon-iconfontzhizuobiaozhun20"></use>
                             </svg>
                             {{item.reshares_count}}
                         </span>
-                        <span class="more">
+                        <span class="bottom-icon-more">
                             <svg class="icon" aria-hidden="true">
                                 <use xlink:href="#icon-gengduo"></use>
                             </svg>
@@ -132,73 +127,7 @@
 </template>
 
 
-<script>
-    import { getAirings } from '../../fetchs/airing/index.js';
-
-    export default {
-        name: 'airing',
-        data() {
-            return {
-                items: []
-            }
-        },
-        created() {
-            getAirings().then( res => {
-                this.items = res.items.map( v => {
-                    return v.status
-                });
-                console.log('this.items',this.items);
-            })
-        },
-        methods: {
-            getFontIndex(text, end=undefined) {
-                // 文字的开始位置
-                let titleStart = text.indexOf('#');
-                let domainStart = text.indexOf('https');
-                let result;
-                // 如果end不传就是要取域名,否则就是取title
-                if(end === undefined){
-                    result = text.slice(domainStart);
-                }else if(titleStart > -1 && end !== undefined){
-                    result = `#${text.slice(titleStart + 1, end)}#`;
-                }
-                return result;
-            },
-            getFont(text) {
-                let textArray = text.split(' ');
-                return textArray.map( v => {
-                    if(v.slice(0, 1) === '#'){
-                        return {
-                            value : v,
-                            type : 1
-                        }
-                    }else if(v.slice(0, 4) === 'http'){
-                        return {
-                            value : v,
-                            type : 2
-                        }
-                    }else{
-                        return {
-                            value : v,
-                            type : 3
-                        }
-                    }
-                })
-            },
-            getMoreAiring(id) {
-                getAirings({
-                    max_id : id
-                }).then( res => {
-                    console.log('more items',this.items);
-                    let data = res.items.map( v => {
-                        return v.status;
-                    })
-                    this.items = [...this.items, ...data];
-                })
-            }
-        }
-    }
-</script>
+<script src="./index.js"></script>
 
 <style lang="less">
     @import './style.less';
