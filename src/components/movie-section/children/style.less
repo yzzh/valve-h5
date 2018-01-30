@@ -6,51 +6,50 @@
     line-height: 1;
 }
 
-        .list-item{
-            display: inline-block;
-            margin-right: 18px;
-            width: 100px;
-            a{
-                color:#111;
-                .list-poster{ // 以背景图片的方式显示图片，配合以下的:before（:after也行）来控制图片的大小 ？？
-                    background-size: cover;
-                    background-position: center;
-                    overflow: hidden;
-                    &:after{
-                        content:'';
-                        float: left;
-                        margin-top: 144%; // 图片的高宽比
-                    }
+    .list-item{
+        display: inline-block;
+        margin-right: 18px;
+        width: 100px;
+        a{
+            color:#111;
+            .list-poster{ // 以背景图片的方式显示图片，配合以下的:before（:after也行）来控制图片的大小 ？？
+                background-size: cover;
+                background-position: center;
+                overflow: hidden;
+                &:after{
+                    content:'';
+                    float: left;
+                    margin-top: 144%; // 图片的高宽比
                 }
-                .list-title{
-                    font-size: 15px;
-                    margin-top: 10px;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                }
-                .list-rating{
-                    .rating-public;
-                    display: flex;
-                    justify-content: space-around;
-                    height: 12px;
-                    .star-color{
-                        position: relative;
-                        text-align: center;
-                        .star-color-red{
-                            position: absolute;
-                            left: 0px;
-                            top: 0;
-                            overflow: hidden; // 配合精确到百分比显示评分的小星星
-                            .rating-star-color{
-                                color: red;
-                            }
+            }
+            .list-title{
+                font-size: 15px;
+                margin-top: 10px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .list-rating{
+                .rating-public;
+                display: flex;
+                justify-content: space-around;
+                height: 12px;
+                .star-color{
+                    position: relative;
+                    text-align: center;
+                    .star-color-red{
+                        position: absolute;
+                        left: 0px;
+                        top: 0;
+                        overflow: hidden; // 配合精确到百分比显示评分的小星星
+                        .rating-star-color{
+                            color: red;
                         }
                     }
                 }
-                .no-rating{
-                    .rating-public;
-                }
+            }
+            .no-rating{
+                .rating-public;
             }
         }
-    // }
+    }

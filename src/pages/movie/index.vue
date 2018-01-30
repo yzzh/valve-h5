@@ -38,10 +38,11 @@
     },
     // 为啥他们的请求发送顺序是正常的，数据打印出来的顺序是相反的？
     async created() {
-        const r1 = getMovieShow();
-        const r2 = getMovieFree();
-        const r3 = getMovieLatest();
-        const [movieShow, movieFree, movieLatest] = await Promise.all([r1,r2,r3]);
+        const res1 = getMovieShow();
+        const res2 = getMovieFree();
+        const res3 = getMovieLatest();
+        // 这三个请求的最终完成时间由其中最长的一个来决定
+        const [movieShow, movieFree, movieLatest] = await Promise.all([res1,res2,res3]);
         // console.log('影院热映',res);
         // Object.assign为以下三行的更简化方式
         // this.movieShow = movieShow;
@@ -51,23 +52,7 @@
             movieShow,
             movieFree,
             movieLatest,
-        })
-        //   const res = await this.getMovieList();
-        //   console.log('影院热映',res);
-    //     getMovieFree({
-    //       success: (res) => {
-    //         console.log('免费在线观影',res);
-    //         this.movieFree.collection = res.subject_collection;
-    //         this.movieFree.collectionItems = res.subject_collection_items;
-    //       }
-    //   });
-    //   getMovieLatest({
-    //       success: (res) => {
-    //         console.log('新片速递',res);
-    //         this.movieLatest.collection = res.subject_collection;
-    //         this.movieLatest.collectionItems = res.subject_collection_items;
-    //       }
-    //   })
+        }) // Object.assign（target，... sources）用法=> target：拷贝的目标对象;source: 拷贝的源对象;返回：target
     },
     methods: {
         getStars(value) {

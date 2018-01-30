@@ -1,24 +1,3 @@
-// export function getMovieShow({
-//   os = 'ios',
-//   callback = 'jsonp1',
-//   start = '0',
-//   count = '8',
-//   loc_id = '108288',
-//   _ = '0'
-// } = {} ) {
-//   return DB.Ajax({
-//     url: 'v2/subject_collection/movie_showing/',
-//     type: 'get',
-//     data: {
-//       os,
-//       callback,
-//       start,
-//       count,
-//       loc_id,
-//       _
-//     }
-//   })
-// }
 
 // 以下方法中的参数写法意思：es6写法
 // 使用getMovieShow时没有传任何参数，则默认参数为空对象，不会报错 => 若对象中没有os这个key，则默认给此对象加一个os:'ios'的属性，后面的属性类似。
@@ -34,6 +13,8 @@ export function getMovieShow({
   loc_id = '108288',
   _ = '1517210951135',
 } = {} ) {
+    // Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。
+    // 它们是两个函数：resolve函数在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。
     return new Promise((resolve, reject) => {
         $.ajax({
             url: 'https://m.douban.com/rexxar/api/v2/subject_collection/movie_showing/items',
@@ -45,8 +26,8 @@ export function getMovieShow({
                 _
             },
             dataType: 'jsonp',
-            success: resolve,
-            error: reject
+            success: resolve, // 数据请求成功的时候执行Promise的异步操作成功的回调即resolve
+            error: reject // 数据请求失败的时候执行Promise的异步操作失败的回调即reject
         })
     });
 }
@@ -77,28 +58,6 @@ export function getMovieFree({
         })
     })
 }
-// export function getMovieFree({
-//   os = 'ios',
-//   callback = 'jsonp2',
-//   start = '0',
-//   count = '8',
-//   loc_id = '108288',
-//   _ = '1517210951136',
-//   success = () => {}
-// } = {} ) {
-//   return $.ajax({
-// 	url: 'https://m.douban.com/rexxar/api/v2/subject_collection/movie_free_stream/items',
-//     data : {
-//         os,
-//         start,
-//         count,
-//         loc_id,
-//         _
-//     },
-//     dataType: 'jsonp',
-//     success,
-//     })
-// }
 
 // 新片速递
 export function getMovieLatest({
@@ -125,27 +84,37 @@ export function getMovieLatest({
                 error: reject
             })
     })
-
 }
-// export function getMovieLatest({
-//   os = 'ios',
-//   callback = 'jsonp3',
-//   start = '0',
-//   count = '8',
-//   loc_id = '108288',
-//   _ = '1517210951139',
-//   success = () => {}
-// } = {} ) {
-//   return $.ajax({
-// 	url: 'https://m.douban.com/rexxar/api/v2/subject_collection/movie_latest/items',
-//     data : {
-//         os,
-//         start,
-//         count,
-//         loc_id,
-//         _
-//     },
-//     dataType: 'jsonp',
-//     success,
-//     })
-// }
+
+/** 没有用Promise封装之前得函数，如下，用法如下
+ * 封装：
+export function getMovieLatest({
+  os = 'ios',
+  callback = 'jsonp3',
+  start = '0',
+  count = '8',
+  loc_id = '108288',
+  _ = '1517210951139',
+  success = () => {}
+} = {} ) {
+  return $.ajax({
+	url: 'https://m.douban.com/rexxar/api/v2/subject_collection/movie_latest/items',
+    data : {
+        os,
+        start,
+        count,
+        loc_id,
+        _
+    },
+    dataType: 'jsonp',
+    success,
+    })
+}
+* 用法：（会比较复杂）
+getMovieLatest({
+    success: (res) => {
+    console.log('新片速递',res);
+    this.movieLatest.collection = res.subject_collection;
+    this.movieLatest.collectionItems = res.subject_collection_items;
+    }
+})*/
