@@ -110,22 +110,10 @@
                 <button class="btn-more-airing" @click="getMoreAiring(items[items.length - 1].id)">显示更多广播</button>
             </ul>
         </section>
-        <div class="download-app">
-            <div class="app-logo">
-                <img src="../../assets/douban-app-logo.png" alt="">
-                <div class="logo-content">
-                    <strong>豆瓣</strong>
-                    <p>在App里刷广播更快乐</p>
-                </div>
-            </div>
-            <a href="https://www.douban.com/doubanapp/card/log?category=guangbo&cid=&action=click_download&ref=http%3A//www.douban.com/doubanapp/app%3Fchannel%3Dcard_guangbo%26direct_dl%3D1">
-                去 App Store 免费下载 iOS 客户端
-            </a>
-        </div>
-
+        <!--脚部下载信息组件-->
+        <footerDownload :info="airingInfo"></footerDownload>
     </div>
 </template>
-
 
 <script src="./index.js"></script>
 

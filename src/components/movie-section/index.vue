@@ -1,55 +1,37 @@
 <template>
     <section class="movie-list">
-        <header>
-            <h2 class="list-name">{{movieList.subject_collection.name}}</h2>
-            <span class="list-more">更多</span>
-        </header>
+        <sectionHeader
+            :subjectCollection="movieList.subject_collection"
+            :path="morePath"
+            ></sectionHeader>
         <div class="section-content">
             <ul class="list-items">
-                <listItem v-for="item in movieList.subject_collection_items" :item="item"></listItem>
+                <listItem v-for="(item,index) in movieList.subject_collection_items"
+                    :item="item"
+                    :key="index"></listItem>
             </ul>
         </div>
     </section>
 </template>
 
 <script>
+    import sectionHeader from './children/section-header.vue';
     import listItem from './children/list-item.vue';
 
     export default {
         name: 'movie-section',
         data() {
             return {
-
             }
         },
         components: {
+            sectionHeader,
             listItem
         },
         props: {
-            movieList: {
-                collection: {
-                    type: Object
-                },
-                collectionItems: Array
-            },
-        },
-        // methods: {
-        //     getStars(value) {
-        //         let result;
-        //         if (value > 0 && value <= 2){
-        //             result = 1;
-        //         }else if(value <= 4){
-        //             result = 2;
-        //         }else if(value <= 6){
-        //             result = 3;
-        //         }else if(value <= 9){
-        //             result = 4;
-        //         }else{
-        //             result = 5;
-        //         }
-        //         return result;
-        //     }
-        // }
+            movieList: Object,
+            morePath: String,
+        }
     }
 </script>
 

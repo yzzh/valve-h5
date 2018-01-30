@@ -1,11 +1,11 @@
 <template>
     <div>
-        这是group页面
+        latest
     </div>
 </template>
 
 <script>
     export default {
-        name: 'group'
+        name: 'latest'
     }
 </script>

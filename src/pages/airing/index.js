@@ -1,11 +1,16 @@
 import { getAirings } from '../../fetchs/airing/index.js';
+import footerDownload from '../../components/footer-download/index.vue';
 
 export default {
     name: 'airing',
     data() {
         return {
-            items: []
+            items: [],
+            airingInfo: '在App里刷广播更快乐'
         }
+    },
+    components: {
+        footerDownload
     },
     created() {
         getAirings().then( res => {
