@@ -1,0 +1,74 @@
+
+.after-public{
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: #e8e8e8;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.group-root{
+    margin: 0 18px;
+    .group-section{
+        padding: 14px 0 30px 0;
+        text-align: left;
+        header{
+            font-size: 18px;
+            color: #111;
+        }
+        .group-content{
+            li{
+                padding: 15px 0 15px 0;
+                position: relative;
+                a{
+                    display: block;
+                    .group-meta{
+                        padding-bottom: 10px;
+                        display: flex;
+                        align-items: center;
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 2px;
+                            border: 1px solid #f1f1f1;
+                        }
+                        .group-name{
+                            padding: 0 10px 0 10px;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            color: #111;
+                            font-size: 18px;
+                            flex: 1; // 剩余空间是正值或负值时此「flex子项」相对于「flex容器」里其他「flex子项」能分配到空间比例
+                        }
+                        .group-member{
+                            font-size: 15px;
+                            color: #ccc;
+                        }
+                    }
+                    .group-topic{
+                        font-size: 15px;
+                        color: #aaa;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+                &:after{
+                    .after-public;
+                }
+            }
+        }
+        .more-group{
+            font-size: 15px;
+            color: #42bd56;
+            text-align: center;
+            padding: 12px 0;
+            position: relative;
+            &:after{
+                .after-public;
+            }
+        }
+    }
+}
