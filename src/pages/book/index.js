@@ -15,7 +15,7 @@ export default {
                 url: '/book/hotfiction',
                 headerName: '最受关注图书｜虚构类',
                 // subject_collection: {},
-                subject_collection_items: [] // 是否因为这行数据是需要向请求来的数据中塞向模板中的第一行，所以不屑就报错？？
+                // subject_collection_items: [] // 是否因为这行数据是需要向请求来的数据中塞向模板中的第一行，所以不屑就报错？？
             },
             nonFiction: {
                 url: '/book/hotnonfiction',
@@ -26,7 +26,9 @@ export default {
             valveBookshop: {
                 url: '/book/bookshop',
                 headerName: '豆瓣书店',
-                header: {},
+                header: {
+                    cover: {}
+                },
                 subject_collection_items: []
             },
             typeList,

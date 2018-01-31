@@ -107,6 +107,7 @@
                         left: 0px;
                         top: 0;
                         overflow: hidden; // 配合精确到百分比显示评分的小星星
+                        white-space: nowrap;
                         .rating-star-color{
                             color: red;
                         }

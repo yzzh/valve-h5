@@ -37,19 +37,19 @@
 </script>
 
 <style lang="less" scoped>
-    @import '../../global.less';
+    // @import '../../global.less';
     @import '../../base.less';
 
     .section-content{
         margin-bottom: -18px; // 遮住横向滚动条
     }
     .movie-section{
-        padding-top: 10px;
-        background-color: #fff;
-        // 方法一：遮住横向滚动条，与其子元素的margin-bottom:-18px配合使用，让其后面的兄弟盖住此元素的横向滚动条。若不用这个，则此元素会纵向盖住下一个兄弟元素
-        // position: relative;
-        // 方法二：遮住横向滚动条，与方法一相同作用
-        overflow: hidden;
+        // padding-top: 10px;
+        // background-color: #fff;
+        // // 方法一：遮住横向滚动条，与其子元素的margin-bottom:-18px配合使用，让其后面的兄弟盖住此元素的横向滚动条。若不用这个，则此元素会纵向盖住下一个兄弟元素
+        // // position: relative;
+        // // 方法二：遮住横向滚动条，与方法一相同作用
+        // overflow: hidden;
         header{
             position: relative;
             margin: 0 18px
