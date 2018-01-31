@@ -1,0 +1,75 @@
+.book-root{
+    // margin: 0 18px;
+}
+#valve-bookshop{
+    padding-top: 10px;
+    background-color: #fff;
+    overflow: hidden;
+    .bookshop-header{
+        position: relative;
+        margin: 0 18px;
+        .bookshop-subheader{
+            display: block;
+            margin: 15px 17px 0 17px;
+            overflow: hidden;
+            .img-cover{
+                position: relative;
+                width: 100px;
+                padding-top: 46%;
+                float: left;
+                margin-right: 15px;
+                img{
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                }
+            }
+            .subheader-content{
+                overflow: hidden;
+                .subheader-title{
+                    overflow: hidden;
+                    margin: 10px 0;
+                    .name{
+                        font-size: 19px;
+                        color: #494949;
+                        max-width: 100%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        word-wrap: normal;
+                        float: left;
+                    }
+                    .price{
+                        float: right;
+                        color: #E76648;
+                        font-size: 16px;
+                        line-height: 22px;
+                    }
+                }
+                .subheader-desc{
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    font-size: 13px;
+                    font-weight: 300;
+                    line-height: 1.5;
+                    color: #9B9B9B;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+    .bookshop-content{
+        margin-bottom: -18px;
+        .bookshop-items{
+            padding: 15px 0 43px 0;
+            white-space: nowrap;
+            overflow-x: auto;
+            font-size: 0;
+            border-bottom: 1px solid #eee;
+        }
+    }
+}

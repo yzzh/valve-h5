@@ -29,7 +29,8 @@
                 <span class="rating-value">{{item.rating.value}}</span>
             </div>
             <!--暂无评分 （rating === null）-->
-            <div class="no-rating" v-if="item.rating === null">暂无评分</div>
+            <div class="no-rating" v-if="item.rating === null && item.price === null">暂无评分</div>
+            <div class="no-rating" v-if="item.rating === null && item.price !== null">¥{{item.price}}</div>
         </a>
     </li>
 </template>
@@ -61,5 +62,60 @@
 </script>
 
 <style lang="less" scoped>
-    @import './style.less';
+    // @import './style.less';
+    // 电影评分处公用样式
+    .rating-public{
+        font-size: 12px;
+        margin-top: 5px;
+        color: #aaa;
+        line-height: 1;
+    }
+
+    .list-item{
+        display: inline-block;
+        margin-left: 18px;
+        width: 100px;
+        a{
+            color:#111;
+            .list-poster{ // 以背景图片的方式显示图片，配合以下的:before（:after也行）来控制图片的大小 ？？
+                background-size: cover;
+                background-position: center;
+                overflow: hidden;
+                &:after{
+                    content:'';
+                    float: left;
+                    margin-top: 144%; // 图片的高宽比
+                }
+            }
+            .list-title{
+                font-size: 15px;
+                margin-top: 10px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .list-rating{
+                .rating-public;
+                display: flex;
+                justify-content: space-around;
+                height: 12px;
+                .star-color{
+                    position: relative;
+                    text-align: center;
+                    .star-color-red{
+                        position: absolute;
+                        left: 0px;
+                        top: 0;
+                        overflow: hidden; // 配合精确到百分比显示评分的小星星
+                        .rating-star-color{
+                            color: red;
+                        }
+                    }
+                }
+            }
+            .no-rating{
+                .rating-public;
+            }
+        }
+    }
 </style>

@@ -1,6 +1,7 @@
 <template>
     <header>
-        <h2 class="list-name">{{subjectCollection.name}}</h2>
+        <!--<h2 class="list-name">{{subjectCollection.name}}</h2>-->
+        <h2 class="list-name">{{name}}</h2>
         <span class="list-more" @click="toMovieChild()">更多</span>
     </header>
 </template>
@@ -9,7 +10,8 @@
     export default {
         name: 'section-header',
         props: {
-            subjectCollection: Object,
+            // subjectCollection: Object,
+            name: String,
             path: String
         },
         methods: {

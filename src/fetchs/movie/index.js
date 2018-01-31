@@ -41,8 +41,7 @@ export function getMovieFree({
   loc_id = '108288',
   _ = '1517210951136',
 } = {} ) {
-  return new Promise(
-    (resolve,reject)=>{
+  return new Promise((resolve,reject)=>{
         $.ajax({
             url: 'https://m.douban.com/rexxar/api/v2/subject_collection/movie_free_stream/items',
             data : {

@@ -15,6 +15,7 @@
                     :style="{ backgroundImage: `url(${recommend.target.cover_url})`}"
                     >
                     <!--<img src="https://img3.doubanio.com/img/files/file-1516877014.jpg" alt="">-->
+                    <div class="img-bottom"></div>
                 </div>
                 <h3 class="feed-title">{{recommend.title}}</h3>
                 <p class="feed-desc">{{recommend.target.desc}}</p>
