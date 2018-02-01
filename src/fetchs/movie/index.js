@@ -85,6 +85,35 @@ export function getMovieLatest({
     })
 }
 
+// 获取电影数据抽象函数,/movie页面用的时候需要传url,_这两个参数（若不传，默认用影院热映的数据），
+// /movie/child页面用的时候需要传url,_,start,count四个参数
+export function getMovieData({
+  os = 'ios',
+//   callback = 'jsonp3',
+  start = '0',
+  count = '8',
+  loc_id = '108288',
+  _ = '1517210951135',
+  url = 'https://m.douban.com/rexxar/api/v2/subject_collection/movie_showing/items',
+} = {} ) {
+    return new Promise(
+        (resolve, reject) => {
+            $.ajax({
+                url,
+                data : {
+                    os,
+                    start,
+                    count,
+                    loc_id,
+                    _
+                },
+                dataType: 'jsonp',
+                success: resolve,
+                error: reject
+            })
+    })
+}
+
 /** 没有用Promise封装之前得函数，如下，用法如下
  * 封装：
 export function getMovieLatest({

@@ -15,7 +15,8 @@
 </template>
 
 <script>
-    import { getMovieShow } from '../../../../fetchs/movie/index.js';
+    // import { getMovieShow } from '../../../../fetchs/movie/index.js';
+    import { getMovieData } from '../../../../fetchs/movie/index.js';
     import listItem from '../../../../components/children/list-item.vue';
 
     export default {
@@ -26,10 +27,9 @@
                     subject_collection: {},
                     subject_collection_items: []
                 },
-                loadStatus: 0, // 可以加载
-                loadNum: 0, // 加载次数
-                start: 0,
-                contentHeight: ''
+                loadStatus: 0, // 加载状态，0 可以加载；1 正在加载
+                start: 0, // 获取数据时变化的参数
+                contentHeight: '' // DOM中出去header元素的根元素的高度，监听滚动条需要与此高度及overflow结合起来
             }
         },
         components: {
@@ -40,38 +40,36 @@
                 return document.defaultView.getComputedStyle(dom)[style];
             },
             loadMovieShow(e, forceFlag){
-                // let loadNum = 0;
-                let root = this.$refs.nontheaterRoot;
+                let root = this.$refs.nontheaterRoot; // DOM中的nontheaterRoot是变量，所以不能要用驼峰式命名法
                 let scroll = root.scrollHeight;
                 let top = root.scrollTop;
                 let height = parseInt(this.getStyle(root, 'height'), 10);
                 let isLoad = scroll <= top + height + 100;
-                // let start;
                 if(forceFlag || this.loadStatus === 0 && isLoad){
                     this.loadStatus = 1;// 正在加载
-                    // start = 0;
-                    // // 第二次加载
-                    // if(!forceFlag && this.loadNum === 1){
-                    //     this.start = 18;
-                    // };
-                    // // 第三次加载
-                    // if(!forceFlag && this.loadNum === 2){
-                    //     this.start = 36;
-                    // }
-                    getMovieShow({
+                    // getMovieShow({
+                    //     start: this.start,
+                    //     count : 18
+                    // })
+                    getMovieData({ // 用获取电影数据接口抽象函数获取数据
                         start: this.start,
-                        count : 18
-                    }).then(res => {
+                        count: 18
+                    })
+                    .then(res => {
+                        // 第一次取就没有数据
+                        if(this.start === 0 && !res.subject_collection_items.length){
+                            this.loadStatus = -1;
+                            return;
+                        }
                         if(!res.subject_collection_items.length){
                             this.$refs.nontheaterRoot.removeEventListener('scroll',this.loadMovieShow.bind(this), false);
-                            this.loadStatus = 2;// 加载完成
+                            this.loadStatus = 2;// 加载完成，没有数据了，修改状态，防止再次去获取数据
                             return;
                         };
                         // this.movieshow = {...this.movieshow, ...res};此行错，后者会覆盖前者，页面就没有第一次的数据了 ,明天看下面这两行和此行的区别
+                        this.movieshow.subject_collection = {...this.movieshow.subject_collection, ...res.subject_collection};
                         this.movieshow.subject_collection_items = [...this.movieshow.subject_collection_items, ...res.subject_collection_items];
-                        this.movieshow.subject_collection = [...this.movieshow.subject_collection, ...res.subject_collection];
-                        this.loadStatus = 0;
-                        this.loadNum ++;
+                        this.loadStatus = 0; //数据获取到以后修改加载状态为可以加载
                         this.start += 18;
                         console.log('this.movieshow', this.movieshow);
                     })
@@ -83,13 +81,7 @@
             }
         },
         mounted() {
-            // getMovieShow({
-            //     count : '18'
-            // }).then(res => {
-            //     this.movieshow = res;
-            //     console.log(this.movieshow);
-            // })
-            // 设置跟元素高度
+            // 设置根元素高度（除去header元素）
             let headerHeight = document.getElementById('header').offsetHeight;
             this.contentHeight = window.screen.height - headerHeight;
             this.loadMovieShow(1, true);

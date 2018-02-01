@@ -34,7 +34,7 @@ export default {
             this.loadingStatus = 1; //正在加载
             // 第一次进入此页面时next_date需要传一个空字符串，服务端返回当天日期
             let next_date = '';
-            // 第二次进入此函数会执行此代码块
+            // 第二次进入此函数会执行此代码块，处理next_date参数
             if(!forceFlag) {
                 next_date = format(new Date(this.currentTime), 'yyyy-MM-dd');
                 this.currentTime -= oneDayTime;

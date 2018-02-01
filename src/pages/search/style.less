@@ -1,0 +1,85 @@
+@import '../../base.less';
+
+.search-root{
+    margin-top: -51px;
+    .search-header{
+        position: relative;
+        .close-btn{
+            font-size: 16px;
+            color: #42bd56;
+            background-color: #fff;
+            outline: none;
+            position: absolute;
+            left: 18px;
+            top: 18px;
+        }
+        form{
+            padding: 15px 18px 15px 60px;
+            border-bottom: 1px solid #f3f3f3;
+            input{
+                background-color: #f3f3f3;
+                height: 30px;
+                width: 100%;
+                border-radius: 3px;
+                outline: none;
+                text-indent: 10px;
+            }
+            span{
+                font-size: 26px;
+                color: #aaa;
+                font-weight: 700;
+                position: absolute;
+                left: 50%;
+                transform: translateY(-100%);
+            }
+        }
+    }
+    .search-content{
+        padding-top: 25px;
+        overflow: hidden;
+        border-bottom: 1px solid #f3f3f3;
+        li{
+            width: 33.33%;
+            float: left;
+            box-sizing: border-box;
+            margin-bottom: 25px;
+            a{
+                display: block;
+                strong{
+                    font-size: 24px;
+                    font-weight: 400;
+                    line-height: 28px;
+                }
+                p{
+                    font-size: 12px;
+                    height: 17px;
+                    color: #999;
+                }
+
+            }
+        }
+    }
+    .nav-bottom{
+        overflow: hidden;
+        li{
+            width: 50%;
+            float: left;
+            padding: 13px 0;
+            border-bottom: 1px solid #f3f3f3;
+            position: relative;
+            a{
+                color: @link-color;
+            }
+            &:nth-child(even):before{
+                content: '';
+                height: 20px;
+                width: 1px;
+                background-color: #e5e5e5;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}

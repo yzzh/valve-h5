@@ -15,12 +15,11 @@
 </template>
 
 <script>
-    // import { getMovieLatest } from '../../../../fetchs/movie/index.js';
-    import { getMovieData } from '../../../../fetchs/movie/index.js';
+    import { getMovieShow } from '../../../../fetchs/movie/index.js';
     import listItem from '../../../../components/children/list-item.vue';
 
     export default {
-        name: 'latest',
+        name: 'nowintheater',
         data() {
             return {
                 movieshow: {
@@ -40,24 +39,17 @@
                 return document.defaultView.getComputedStyle(dom)[style];
             },
             loadMovieShow(e, forceFlag){
-                let root = this.$refs.nontheaterRoot; // DOM中的nontheaterRoot是变量，所以不能要用驼峰式命名法
+                let root = this.$refs.nontheaterRoot; // DOM中的nontheaterRoot是变量，所以要用驼峰式命名法
                 let scroll = root.scrollHeight;
                 let top = root.scrollTop;
                 let height = parseInt(this.getStyle(root, 'height'), 10);
                 let isLoad = scroll <= top + height + 100;
                 if(forceFlag || this.loadStatus === 0 && isLoad){
                     this.loadStatus = 1;// 正在加载
-                    // getMovieLatest({
-                    //     start: this.start,
-                    //     count : 18
-                    // })
-                    getMovieData({// 用获取电影数据接口抽象函数获取数据
+                    getMovieShow({
                         start: this.start,
-                        count: 18,
-                        url: 'https://m.douban.com/rexxar/api/v2/subject_collection/movie_latest/items',
-                        _ : '1517210951139'
-                    })
-                    .then(res => {
+                        count : 18
+                    }).then(res => {
                         // 第一次取就没有数据
                         if(this.start === 0 && !res.subject_collection_items.length){
                             this.loadStatus = -1;
