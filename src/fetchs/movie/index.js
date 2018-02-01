@@ -93,7 +93,7 @@ export function getMovieData({
   start = '0',
   count = '8',
   loc_id = '108288',
-  _ = '1517210951135',
+  _ = Date.now(),
   url = 'https://m.douban.com/rexxar/api/v2/subject_collection/movie_showing/items',
 } = {} ) {
     return new Promise(

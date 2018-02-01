@@ -37,7 +37,6 @@
 </script>
 
 <style lang="less" scoped>
-    // @import '../../global.less';
     @import '../../base.less';
 
     .section-content{

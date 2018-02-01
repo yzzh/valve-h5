@@ -11,7 +11,7 @@ export default {
     data() {
         return {
             movieShow: {
-                url: '/movie/nowintheater',
+                url: '/movie/nowintheater/108288',
                 // 代表name， 这行必须写，因为这行的数据是为了sectionHeader组件准备的，而这个组件中的数据是直接通过
                 // subject_collection.name点语法获取，而不是通过v-for遍历 ????
                 subject_collection: {},

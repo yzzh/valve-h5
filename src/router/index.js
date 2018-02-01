@@ -49,7 +49,7 @@ export default new Router({
             component: search
         },
         {
-            path: '/movie/nowintheater',
+            path: '/movie/nowintheater/:loc_id',
             name: 'nowintheater',
             component: nowintheater
         },

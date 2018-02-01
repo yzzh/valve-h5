@@ -1,5 +1,5 @@
 <template>
-    <div id="nontheater" ref="nontheaterRoot" :style="{
+    <div class="nontheater" ref="nontheaterRoot" :style="{
         height: contentHeight + 'px',
         overflow: 'auto'
         }">
@@ -15,11 +15,14 @@
 </template>
 
 <script>
-    import { getMovieShow } from '../../../../fetchs/movie/index.js';
-    import listItem from '../../../../components/children/list-item.vue';
+    import { getMovieData } from '../../fetchs/movie/index.js';
+    import listItem from '../children/list-item.vue';
 
     export default {
-        name: 'nowintheater',
+        name: 'movie-child',
+        props: {
+            url: String // loadMovieShow方法中的getMovieData方法中父组件用的时候动态传入的参数，
+        },
         data() {
             return {
                 movieshow: {
@@ -39,17 +42,20 @@
                 return document.defaultView.getComputedStyle(dom)[style];
             },
             loadMovieShow(e, forceFlag){
-                let root = this.$refs.nontheaterRoot; // DOM中的nontheaterRoot是变量，所以要用驼峰式命名法
+                let root = this.$refs.nontheaterRoot; // DOM中的nontheaterRoot是变量，所以不能要用驼峰式命名法
                 let scroll = root.scrollHeight;
                 let top = root.scrollTop;
                 let height = parseInt(this.getStyle(root, 'height'), 10);
                 let isLoad = scroll <= top + height + 100;
                 if(forceFlag || this.loadStatus === 0 && isLoad){
                     this.loadStatus = 1;// 正在加载
-                    getMovieShow({
+                    getMovieData({// 用获取电影数据接口抽象函数获取数据
                         start: this.start,
-                        count : 18
-                    }).then(res => {
+                        count: 18,
+                        url: this.url
+                        // _ : '1517210951139' 动态事件戳，可以不传
+                    })
+                    .then(res => {
                         // 第一次取就没有数据
                         if(this.start === 0 && !res.subject_collection_items.length){
                             this.loadStatus = -1;
@@ -88,9 +94,7 @@
 </script>
 
 <style lang="less" scoped>
-    @import '../../../../global.less';
-
-    #nontheater{
+    .nontheater{
         header{
             font-size: 24px;
             padding-left: 18px;

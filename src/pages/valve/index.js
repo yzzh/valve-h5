@@ -1,6 +1,6 @@
 import { getRecommend } from '../../fetchs/valve/index.js';
 import { format } from '../../utils/date';
-import { pageList } from '../../list'
+import { pageList } from './data';
 
 // 一天的毫秒数
 const oneDayTime = 24 * 60 * 60 * 1000;
@@ -70,6 +70,9 @@ export default {
         getStyle(dom, style) {
             return document.defaultView.getComputedStyle(dom)[style];
         },
+        toPage(path) {
+            this.$router.push(path);
+        }
     },
     mounted() {
         let headerHeight = document.getElementById('header').offsetHeight;;

@@ -26,22 +26,6 @@ const navList = [
   }
 ];
 
-const pageList = [
-  {
-    title: '影院热映',
-  },
-  {
-    title: '华语新碟榜',
-  },
-  {
-    title: '豆瓣时间',
-  },
-  {
-    title: '使用豆瓣App',
-  }
-];
-
 export {
-  navList,
-  pageList
+  navList
 };
