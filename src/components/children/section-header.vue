@@ -1,6 +1,5 @@
 <template>
     <header>
-        <!--<h2 class="list-name">{{subjectCollection.name}}</h2>-->
         <h2 class="list-name">{{name}}</h2>
         <span class="list-more" @click="toMovieChild()">更多</span>
     </header>
@@ -10,15 +9,11 @@
     export default {
         name: 'section-header',
         props: {
-            // subjectCollection: Object,
             name: String,
             path: String
         },
         methods: {
             toMovieChild() {
-                // this.$router.push(Object.values(path));
-                // console.log(Object.values(path))
-                // window.open(path.url);
                 this.$router.push(this.path)
             }
         }

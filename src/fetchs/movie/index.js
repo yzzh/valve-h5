@@ -67,8 +67,7 @@ export function getMovieLatest({
   loc_id = '108288',
   _ = '1517210951139',
 } = {} ) {
-    return new Promise(
-        (resolve, reject) => {
+    return new Promise((resolve, reject) => {
             $.ajax({
                 url: 'https://m.douban.com/rexxar/api/v2/subject_collection/movie_latest/items',
                 data : {
@@ -89,15 +88,14 @@ export function getMovieLatest({
 // /movie/child页面用的时候需要传url,_,start,count四个参数
 export function getMovieData({
   os = 'ios',
-//   callback = 'jsonp3',
+//   callback = 'jsonp3', jsonp的方式，所以这个参数可以不传
   start = '0',
   count = '8',
   loc_id = '108288',
   _ = Date.now(),
   url = 'https://m.douban.com/rexxar/api/v2/subject_collection/movie_showing/items',
 } = {} ) {
-    return new Promise(
-        (resolve, reject) => {
+    return new Promise((resolve, reject) => {
             $.ajax({
                 url,
                 data : {

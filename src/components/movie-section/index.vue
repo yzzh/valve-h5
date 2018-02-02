@@ -60,6 +60,11 @@
             // 一个父元素的子元素设置为display:inline-block时，子元素横向摆放时中间可能会有空隙，会影响布局，这时可以把父元素的font-size设置为0，子元素的font-size可重新设置。
             font-size: 0;
             border-bottom: 1px solid #ddd;// 测试横向滚动条是否能看见
+            li{
+                /deep/ .action-tag{
+                    display: none;
+                }
+            }
         }
     }
 </style>

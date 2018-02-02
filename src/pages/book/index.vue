@@ -41,7 +41,70 @@
     </div>
 </template>
 
-<script src="./index.js"></script>
+<script>
+    import { getBookData } from '../../fetchs/book/index.js';
+    import bookSection from '../../components/book-section/index.vue';
+    import sectionHeader from '../../components/children/section-header.vue';
+    import listItem from '../../components/children/list-item.vue';
+    import typeSection from '../../components/type-section/index.vue';
+    import findSection from '../../components/find-section/index.vue';
+    import { typeList, findList } from './data';
+    import footerDownload from '../../components/footer-download/index.vue';
+
+    export default {
+        name: 'book',
+        data() {
+            return {
+                fiction: {
+                    url: '/book/hotfiction',
+                    headerName: '最受关注图书｜虚构类',
+                    subject_collection_items: [] // 模板中用到了这行数据，所以需要先在data中声明，否则vue无法追踪
+                },
+                nonFiction: {
+                    url: '/book/hotnonfiction',
+                    headerName: '最受关注图书｜非虚构类',
+                    subject_collection_items: []
+                },
+                valveBookshop: {
+                    // url: '/book/bookshop',
+                    url: 'https://market.douban.com/book/?utm_campaign=book_freyr_section&utm_source=douban&utm_medium=mobile_web',
+                    headerName: '豆瓣书店',
+                    header: {
+                        cover: {}
+                    },
+                    subject_collection_items: []
+                },
+                typeList,
+                findList,
+                info: '我们的精神角落'
+            }
+        },
+        components: {
+            bookSection,
+            sectionHeader,
+            listItem,
+            typeSection,
+            findSection,
+            footerDownload
+        },
+        async created() {
+            const [fiction, nonFiction, valveBookshop] = await Promise.all([
+                getBookData({
+                    url: 'https://m.douban.com/rexxar/api/v2/subject_collection/book_fiction/items'
+                }),
+                getBookData({
+                    url: 'https://m.douban.com/rexxar/api/v2/subject_collection/book_nonfiction/items'
+                }),
+                getBookData({
+                    url: 'https://m.douban.com/rexxar/api/v2/subject_collection/market_product_book_mobile_web/items'
+                })
+            ]);
+            Object.assign(this.fiction, fiction);
+            Object.assign(this.nonFiction, nonFiction);
+            Object.assign(this.valveBookshop, valveBookshop);
+        }
+    }
+</script>
 
 <style lang="less" scoped>
     @import './style.less';

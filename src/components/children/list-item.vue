@@ -7,30 +7,43 @@
                 }"
                 >
             </div>
-            <div class="list-title">{{item.title}}</div>
-            <!--图标字体 小星星、评分（有评分才存在）-->
-            <div class="list-rating" v-if="item.rating !== null">
-                <div class="star-color">
-                    <div class="star-color-grey">
-                        <span class="rating-star" v-for="n in 5">
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-xingxing"></use>
-                            </svg>
-                        </span>
+            <div class="list-desc">
+                <div class="list-title">{{item.title}}</div>
+                <span class="action-tag"
+                    v-if="item.actions.length"
+                    >{{item.actions[0]}}
+                </span>
+                <!--图标字体 小星星、评分（有评分才存在）-->
+                <div class="list-rating" v-if="item.rating !== null">
+                    <div class="star-color">
+                        <div class="star-color-grey">
+                            <span class="rating-star" v-for="n in 5">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-xingxing"></use>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="star-color-red" :style="{width: `${item.rating.value/10*100}%`}">
+                            <span class="rating-star-color" v-for="n in 5">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-xingxing"></use>
+                                </svg>
+                            </span>
+                        </div>
                     </div>
-                    <div class="star-color-red" :style="{width: `${item.rating.value/10*100}%`}">
-                        <span class="rating-star-color" v-for="n in 5">
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-xingxing"></use>
-                            </svg>
-                        </span>
-                    </div>
+                    <span class="rating-value">
+                        {{countRating(item.rating.value)}}
+                        <!--<span v-if="item.rating.value"></span>-->
+                    </span>
                 </div>
-                <span class="rating-value">{{item.rating.value}}</span>
+                <!--暂无评分 （rating === null）-->
+                <div class="no-rating" v-if="item.rating === null && item.price === null">暂无评分</div>
+                <div class="no-rating" v-if="item.rating === null && item.price !== null">¥{{item.price}}</div>
+                <div class="list-info"
+                    v-if="$router.history.current.fullPath === '/book/hotfiction' || $router.history.current.fullPath === '/book/hotnonfiction'"
+                    >{{item.info}}
+                </div>
             </div>
-            <!--暂无评分 （rating === null）-->
-            <div class="no-rating" v-if="item.rating === null && item.price === null">暂无评分</div>
-            <div class="no-rating" v-if="item.rating === null && item.price !== null">¥{{item.price}}</div>
         </a>
     </li>
 </template>
@@ -42,20 +55,13 @@
             item: Object, // 这里的item代表的是父组件中需要v-for使用数组中的每一个元素，单个元素是个Object
         },
         methods: {
-            getStars(value) {
-                let result;
-                if (value > 0 && value <= 2){
-                    result = 1;
-                }else if(value <= 4){
-                    result = 2;
-                }else if(value <= 6){
-                    result = 3;
-                }else if(value <= 9){
-                    result = 4;
+            countRating(value) {
+                let result = (value + '').split('.');
+                if(result.length === 1){
+                    return value + '.0';
                 }else{
-                    result = 5;
+                    return value;
                 }
-                return result;
             }
         }
     }
@@ -93,6 +99,14 @@
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
+            }
+            .action-tag{
+                border: 1px solid #eee;
+                font-size: 9px;
+                background-color: #f5a623;
+                color: #fff;
+                padding: 1px 5px;
+                border-radius: 3px;
             }
             .list-rating{
                 .rating-public;

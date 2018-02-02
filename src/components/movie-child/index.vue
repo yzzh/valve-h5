@@ -1,12 +1,13 @@
 <template>
-    <div class="nontheater" ref="nontheaterRoot" :style="{
-        height: contentHeight + 'px',
-        overflow: 'auto'
+    <div class="moviechild" ref="moviechildRoot"
+        :style="{
+            height: contentHeight + 'px',
+            overflow: 'auto'
         }">
-        <header>{{movieshow.subject_collection.name}}</header>
-        <ul class="nontheater-content">
+        <header>{{movieData.subject_collection.name}}</header>
+        <ul class="moviechild-content">
             <listItem
-                v-for="(item,index) in movieshow.subject_collection_items"
+                v-for="(item,index) in movieData.subject_collection_items"
                 :item="item"
                 :key="index"
             ></listItem>
@@ -21,11 +22,11 @@
     export default {
         name: 'movie-child',
         props: {
-            url: String // loadMovieShow方法中的getMovieData方法中父组件用的时候动态传入的参数，
+            url: String // loadmovieData方法中的getMovieData方法中父组件用的时候动态传入的参数，
         },
         data() {
             return {
-                movieshow: {
+                movieData: {
                     subject_collection: {},
                     subject_collection_items: []
                 },
@@ -41,8 +42,8 @@
             getStyle(dom, style){
                 return document.defaultView.getComputedStyle(dom)[style];
             },
-            loadMovieShow(e, forceFlag){
-                let root = this.$refs.nontheaterRoot; // DOM中的nontheaterRoot是变量，所以不能要用驼峰式命名法
+            loadmovieData(e, forceFlag){
+                let root = this.$refs.moviechildRoot; // DOM中的moviechildRoot是变量，所以不能要用驼峰式命名法
                 let scroll = root.scrollHeight;
                 let top = root.scrollTop;
                 let height = parseInt(this.getStyle(root, 'height'), 10);
@@ -53,7 +54,7 @@
                         start: this.start,
                         count: 18,
                         url: this.url
-                        // _ : '1517210951139' 动态事件戳，可以不传
+                        // _ : '1517210951139' 动态时间戳，可以不传
                     })
                     .then(res => {
                         // 第一次取就没有数据
@@ -62,16 +63,19 @@
                             return;
                         }
                         if(!res.subject_collection_items.length){
-                            this.$refs.nontheaterRoot.removeEventListener('scroll',this.loadMovieShow.bind(this), false);
+                            this.$refs.moviechildRoot.removeEventListener('scroll',this.loadmovieData.bind(this), false);
                             this.loadStatus = 2;// 加载完成，没有数据了，修改状态，防止再次去获取数据
                             return;
                         };
-                        // this.movieshow = {...this.movieshow, ...res};此行错，后者会覆盖前者，页面就没有第一次的数据了 ,明天看下面这两行和此行的区别
-                        this.movieshow.subject_collection = {...this.movieshow.subject_collection, ...res.subject_collection};
-                        this.movieshow.subject_collection_items = [...this.movieshow.subject_collection_items, ...res.subject_collection_items];
+                        // 此行错，后者会覆盖前者，页面就没有第一次subject_collection_items的数据了,
+                        // this.movieData = {...this.movieData, ...res};
+                        // 而subject_collection每次都一样，所以覆盖住了也没关系,用下面这一行也可以
+                        // this.movieData.subject_collection = res.subject_collection;
+                        this.movieData.subject_collection = {...this.movieData.subject_collection, ...res.subject_collection};
+                        this.movieData.subject_collection_items = [...this.movieData.subject_collection_items, ...res.subject_collection_items];
                         this.loadStatus = 0; //数据获取到以后修改加载状态为可以加载
                         this.start += 18;
-                        console.log('this.movieshow', this.movieshow);
+                        console.log('this.movieData', this.movieData);
                     })
                     .catch(err => {
                         console.log('err', err);
@@ -84,24 +88,24 @@
             // 设置根元素高度（除去header元素）
             let headerHeight = document.getElementById('header').offsetHeight;
             this.contentHeight = window.screen.height - headerHeight;
-            this.loadMovieShow(1, true);
-            this.$refs.nontheaterRoot.addEventListener('scroll',this.loadMovieShow.bind(this), false);
+            this.loadmovieData(1, true);
+            this.$refs.moviechildRoot.addEventListener('scroll',this.loadmovieData.bind(this), false);
         },
         beforeDestroy() {
-            this.$refs.nontheaterRoot.removeEventListener('scroll',this.loadMovieShow.bind(this), false);
+            this.$refs.moviechildRoot.removeEventListener('scroll',this.loadmovieData.bind(this), false);
         }
     }
 </script>
 
 <style lang="less" scoped>
-    .nontheater{
+    .moviechild{
         header{
             font-size: 24px;
             padding-left: 18px;
             text-align: left;
             padding-top: 15px;
         }
-        .nontheater-content{
+        .moviechild-content{
             padding-top: 20px;
             max-width: 660px;
             li  {
@@ -111,9 +115,15 @@
                 float: left;
                 box-sizing: border-box;
                 color: #9b9b9b;
+                position: relative;
                  /deep/ .list-title { // /deep/具备穿透效果，可用于修改复用的子组件的样式（该选择器代表的DOM不在父组件的模板中），
                     font-size: 13px;
                     margin-top: 5px;
+                }
+                /deep/ .action-tag{
+                    position: absolute;
+                    right: 13px;
+                    bottom: 61px;
                 }
             }
         }

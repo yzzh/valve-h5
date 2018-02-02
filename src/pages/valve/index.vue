@@ -2,7 +2,7 @@
     <div ref="root" class="index" :style="{ height: contentHeight + 'px'}">
         <ul class="quick-page page-ul">
             <li class="page-li" v-for="page in pageList">
-                <a href="javascript:;" class="page-a" @click="toPage(page.url)">{{page.title}}</a>
+                <a :href="page.href" class="page-a">{{page.title}}</a>
             </li>
         </ul>
         <div class="recommend-feed">

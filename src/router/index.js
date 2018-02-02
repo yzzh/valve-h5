@@ -1,17 +1,18 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import valve from '../pages/valve/index.vue'
-import movie from '../pages/movie/index.vue'
-import book from '../pages/book/index.vue'
-import airing from '../pages/airing/index.vue'
-import group from '../pages/group/index.vue'
-const search = () => System.import('../pages/search/index.vue');
 // 此为异步加载，即懒加载
-// const nowintheater = () => System.import('../pages/movie/children/nowintheater/index.vue');
-import nowintheater from '../pages/movie/children/nowintheater/index.vue'
+const valve = () => System.import('../pages/valve/index.vue');
+const movie = () =>  System.import('../pages/movie/index.vue');
+const book = () =>  System.import('../pages/book/index.vue')
+const airing = () =>  System.import('../pages/airing/index.vue');
+const group = () => System.import('../pages/group/index.vue');
+const search = () => System.import('../pages/search/index.vue');
+const nowintheater = () => System.import('../pages/movie/children/nowintheater/index.vue')
 const watchonline = () => System.import('../pages/movie/children/watchonline/index.vue');
 const latest = () => System.import('../pages/movie/children/latest/index.vue');
+const hotfiction = () => System.import('../pages/book/children/hotfiction/index.vue');
+const hotnonfiction = () => System.import('../pages/book/children/hotnonfiction/index.vue');
 
 Vue.use(Router)
 
@@ -49,7 +50,7 @@ export default new Router({
             component: search
         },
         {
-            path: '/movie/nowintheater/:loc_id',
+            path: '/movie/nowintheater',
             name: 'nowintheater',
             component: nowintheater
         },
@@ -62,6 +63,16 @@ export default new Router({
             path: '/movie/latest',
             name: 'latest',
             component: latest
+        },
+        {
+            path: '/book/hotfiction',
+            name: 'hotfiction',
+            component: hotfiction
+        },
+        {
+            path: '/book/hotnonfiction',
+            name: 'hotnonfiction',
+            component: hotnonfiction
         }
     ]
 })
