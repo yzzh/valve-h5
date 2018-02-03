@@ -4,47 +4,56 @@ const findList = {
         {
             title: '同时入选IMDB250和豆瓣电影250的电影',
             color: '#FFAC2D',
-            index: 0
+            index: 0,
+            url: 'https://m.douban.com/doulist/968362/'
         },
         {
             title: '带你进入不正常的世界',
             color: '#2384E8',
-            index: 1
+            index: 1,
+            url: 'https://m.douban.com/doulist/16002/'
         },
         {
             title: '用电【影】来祭奠逝去的岁月',
             color: '#3BA94D',
-            index: 2
+            index: 2,
+            url: 'https://m.douban.com/doulist/190343/'
         },
         {
             title: '女孩们的故事【电影】',
             color: '#CC3344',
-            index: 3
+            index: 3,
+            url: 'https://m.douban.com/doulist/1125971/'
         },
         {
             title: '使用 App 【找电影】功能',
             color: '#42BD56',
-            index: 4
+            index: 4,
+            url: 'https://www.douban.com/doubanapp/dispatch?from=mdouban&download=0&model=B&copy=1&page=movie&channel=card_find_movie&uri=%2Fmovie%2Ftag'
         },
         {
             title: '科幻是未来的钥匙——科幻启示录【科幻题材】',
             color: '#FF4055',
-            index: 5
+            index: 5,
+            url: 'https://m.douban.com/doulist/4253902/'
         },
         {
             title: '美国生活面面观',
             color: '#FFC46C',
-            index: 6
+            index: 6,
+            url: 'https://m.douban.com/doulist/121326/'
         },
         {
             title: '2015终极期待',
             color: '#42BD56',
-            index: 7
+            index: 7,
+            url: 'https://m.douban.com/doulist/37479562/'
         },
         {
             title: '经典韩国电影——收集100部',
             color: '#4F9DED',
-            index: 8
+            index: 8,
+            url: 'https://m.douban.com/doulist/458087/'
         }
     ]
 };

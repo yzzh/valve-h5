@@ -7,7 +7,7 @@
                     <li
                         :style="{border: `1px solid ${find.color}`}"
                         >
-                        <a href=""
+                        <a :href="find.url"
                             :style="{color: find.color}"
                             >{{find.title}}</a>
 
