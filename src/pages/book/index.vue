@@ -9,7 +9,8 @@
             <div class="bookshop-header">
                 <sectionHeader
                     :name="valveBookshop.headerName"
-                    :path="valveBookshop.url"></sectionHeader>
+                    :path="valveBookshop.url"
+                    :clickType="1"></sectionHeader>
                 <a class="bookshop-subheader" :href="valveBookshop.header.url">
                     <div class="img-cover">
                         <img :src="valveBookshop.header.cover.url" alt="">

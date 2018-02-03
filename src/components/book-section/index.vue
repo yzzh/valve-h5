@@ -2,7 +2,8 @@
     <section class="book-section">
         <sectionHeader
             :name="bookList.headerName"
-            :path="bookList.url"></sectionHeader>
+            :path="bookList.url"
+            :clickType="clickType"></sectionHeader>
         <div class="section-content">
             <ul class="book-items">
                 <listItem
@@ -21,7 +22,8 @@
     export default {
         name: 'book-section',
         props: {
-            bookList: Object
+            bookList: Object,
+            clickType: Number
         },
         components: {
             sectionHeader,

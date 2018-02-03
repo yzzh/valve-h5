@@ -10,11 +10,21 @@
         name: 'section-header',
         props: {
             name: String,
-            path: String
+            path: String,
+            clickType: {
+                type: Number,
+                default: 0 // 不传默认是0，其他值比如1的时候改变事件
+            }
         },
         methods: {
             toMovieChild() {
-                this.$router.push(this.path)
+                if(this.clickType === 0){
+                    this.$router.push(this.path);
+                    return;
+                };
+                if(this.clickType === 1){
+                    window.open(this.path);
+                }
             }
         }
     }
