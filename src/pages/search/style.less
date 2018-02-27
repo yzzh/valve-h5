@@ -1,31 +1,31 @@
 @import '../../base.less';
 
 .search-root{
-    margin-top: -51px;
+    margin-top: -100px;
     .search-header{
         position: relative;
         .close-btn{
-            font-size: 16px;
+            font-size: 32px;/*px*/
             color: #42bd56;
             background-color: #fff;
             outline: none;
             position: absolute;
-            left: 18px;
-            top: 18px;
+            left: 36px;
+            top: 36px;
         }
-        form{
-            padding: 15px 18px 15px 60px;
-            border-bottom: 1px solid #f3f3f3;
+        .search-input{
+            padding: 30px 36px 30px 120px;
+            border-bottom: 1px solid #f3f3f3;/*no*/
             input{
                 background-color: #f3f3f3;
-                height: 30px;
+                height: 60px;
                 width: 100%;
-                border-radius: 3px;
+                border-radius: 3px;/*no*/
                 outline: none;
-                text-indent: 10px;
+                text-indent: 20px;
             }
             span{
-                font-size: 26px;
+                font-size: 52px;/*px*/
                 color: #aaa;
                 font-weight: 700;
                 position: absolute;
@@ -35,24 +35,24 @@
         }
     }
     .search-content{
-        padding-top: 25px;
+        padding-top: 50px;
         overflow: hidden;
-        border-bottom: 1px solid #f3f3f3;
+        border-bottom: 2px solid #f3f3f3;/*no*/
         li{
             width: 33.33%;
             float: left;
             box-sizing: border-box;
-            margin-bottom: 25px;
+            margin-bottom: 50px;
             a{
                 display: block;
                 strong{
-                    font-size: 24px;
+                    font-size: 48px;/*px*/
                     font-weight: 400;
-                    line-height: 28px;
+                    line-height: 56px;
                 }
                 p{
-                    font-size: 12px;
-                    height: 17px;
+                    font-size: 24px;/*px*/
+                    height: 34px;
                     color: #999;
                 }
 
@@ -63,17 +63,18 @@
         overflow: hidden;
         li{
             width: 50%;
+            font-size: 30px;/*px*/
             float: left;
-            padding: 13px 0;
-            border-bottom: 1px solid #f3f3f3;
+            padding: 30px 0;
+            border-bottom: 2px solid #f3f3f3;/*no*/
             position: relative;
             a{
                 color: @link-color;
             }
             &:nth-child(even):before{
                 content: '';
-                height: 20px;
-                width: 1px;
+                height: 40px;
+                width: 2px;
                 background-color: #e5e5e5;
                 position: absolute;
                 top: 50%;

@@ -1,7 +1,7 @@
 
 .after-public{
     content: '';
-    height: 1px;
+    height: 2px;
     width: 100%;
     background-color: #e8e8e8;
     position: absolute;
@@ -9,47 +9,47 @@
     bottom: 0;
 }
 .group-root{
-    margin-left: 18px;
+    margin-left: 36px;
     .group-section{
-        padding: 14px 0 30px 0;
+        padding: 28px 0 60px 0;
         text-align: left;
         header{
-            font-size: 18px;
+            font-size: 36px;/*px*/
             color: #111;
         }
         .group-content{
             li{
-                padding: 15px 0 15px 0;
+                padding: 30px 0 30px 0;
                 position: relative;
                 a{
                     display: block;
-                    padding-right: 18px;
+                    padding-right: 36px;
                     .group-meta{
-                        padding-bottom: 10px;
+                        padding-bottom: 20px;
                         display: flex;
                         align-items: center;
                         img{
-                            width: 40px;
-                            height: 40px;
-                            border-radius: 2px;
-                            border: 1px solid #f1f1f1;
+                            width: 80px;
+                            height: 80px;
+                            border-radius: 4px;
+                            border: 1px solid #f1f1f1;/*no*/
                         }
                         .group-name{
-                            padding: 0 10px 0 10px;
+                            padding: 0 20px 0 20px;
                             text-overflow: ellipsis;
                             white-space: nowrap;
                             overflow: hidden;
                             color: #111;
-                            font-size: 18px;
+                            font-size: 36px;/*px*/
                             flex: 1; // 剩余空间是正值或负值时此「flex子项」相对于「flex容器」里其他「flex子项」能分配到空间比例
                         }
                         .group-member{
-                            font-size: 15px;
+                            font-size: 30px;/*px*/
                             color: #ccc;
                         }
                     }
                     .group-topic{
-                        font-size: 15px;
+                        font-size: 30px;/*px*/
                         color: #aaa;
                         overflow: hidden;
                         white-space: nowrap;
@@ -62,10 +62,10 @@
             }
         }
         .more-group{
-            font-size: 15px;
+            font-size: 30px;/*px*/
             color: #42bd56;
             text-align: center;
-            padding: 12px 0;
+            padding: 24px 0;
             position: relative;
             &:after{
                 .after-public;

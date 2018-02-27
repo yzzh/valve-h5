@@ -77,7 +77,8 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader',
-          'less-loader'
+          'less-loader',
+          'postcss-loader' // 新增代码，使用postcss的loader
         ]
       }
     ]

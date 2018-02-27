@@ -37,7 +37,7 @@
     @import '../../base.less';
 
     .book-section{
-        padding-top: 10px;
+        padding-top: 20px;
         background-color: #fff;
         // 方法一：遮住横向滚动条，与其子元素的margin-bottom:-18px配合使用，让其后面的兄弟盖住此元素的横向滚动条。若不用这个，则此元素会纵向盖住下一个兄弟元素
         // position: relative;
@@ -45,17 +45,18 @@
         overflow: hidden;
         header{
             position: relative;
-            margin: 0 18px;
+            margin: 0 36px;
         }
         .section-content{
-            margin-bottom: -18px; // 遮住横向滚动条
+            margin-bottom: -36px; // 遮住横向滚动条
             .book-items{
-                padding: 15px 0 43px 0; // padding-bottom的值设得比较大是为了配合其父元素的margin-bottom一起盖住横向滚动条
+                padding: 30px 0 86px 0; // padding-bottom的值设得比较大是为了配合其父元素的margin-bottom一起盖住横向滚动条
                 overflow-x: auto;
                 white-space: nowrap;
                 // 一个父元素的子元素设置为display:inline-block时，子元素横向摆放时中间可能会有空隙，会影响布局，这时可以把父元素的font-size设置为0，子元素的font-size可重新设置。
                 font-size: 0;
-                border-bottom: 1px solid #ddd;// 测试横向滚动条是否能看见
+                // 测试横向滚动条是否能看见
+                border-bottom: 1px solid #ddd;/*no*/
                 li{
                     /deep/ .action-tag{
                         display: none;

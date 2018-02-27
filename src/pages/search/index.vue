@@ -2,14 +2,14 @@
     <div class="search-root">
         <div class="search-header">
             <button class="close-btn" @click="goBack()">关闭</button>
-            <form action="/search">
-                <input type="text">
+            <div class="search-input">
+                <input type="text" @keyup.enter.prevent="search()" v-model="inputValue">
                 <span>
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-sousuo1"></use>
                     </svg>
                 </span>
-            </form>
+            </div>
         </div>
         <ul class="search-content">
             <li v-for="content in contentList">
@@ -34,12 +34,16 @@
         data() {
             return {
                 contentList,
-                navList
+                navList,
+                inputValue: ''
             }
         },
         methods: {
             goBack() {
                 history.back();
+            },
+            search() {
+                location.href=`https://m.douban.com/search/?query=${this.inputValue}`
             }
         }
     }

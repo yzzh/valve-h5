@@ -100,30 +100,29 @@
 <style lang="less" scoped>
     .moviechild{
         header{
-            font-size: 24px;
-            padding-left: 18px;
+            font-size: 24px;/*px*/
+            padding-left:36px;
             text-align: left;
-            padding-top: 15px;
+            padding-top: 30px;
         }
         .moviechild-content{
-            padding-top: 20px;
-            max-width: 660px;
+            padding-top: 40px;
             li  {
                 margin: 0;
                 width: 33.33%;
-                padding: 0 4% 20px 4%;
+                padding: 0 4% 40px 4%;
                 float: left;
                 box-sizing: border-box;
                 color: #9b9b9b;
                 position: relative;
                  /deep/ .list-title { // /deep/具备穿透效果，可用于修改复用的子组件的样式（该选择器代表的DOM不在父组件的模板中），
-                    font-size: 13px;
-                    margin-top: 5px;
+                    font-size: 26px;/*px*/
+                    margin-top: 10px;
                 }
                 /deep/ .action-tag{
                     position: absolute;
-                    right: 13px;
-                    bottom: 61px;
+                    right: 26px;
+                    bottom: 122px;
                 }
             }
         }

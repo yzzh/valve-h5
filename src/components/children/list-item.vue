@@ -71,16 +71,16 @@
     // @import './style.less';
     // 电影评分处公用样式
     .rating-public{
-        font-size: 12px;
-        margin-top: 5px;
+        font-size: 24px;/*px*/
+        margin-top: 10px;
         color: #aaa;
         line-height: 1;
     }
 
     .list-item{
         display: inline-block;
-        margin-left: 18px;
-        width: 100px;
+        margin-left: 36px;
+        width: 200px;
         a{
             color:#111;
             .list-poster{ // 以背景图片的方式显示图片，配合以下的:before（:after也行）来控制图片的大小 ？？
@@ -94,25 +94,25 @@
                 }
             }
             .list-title{
-                font-size: 15px;
-                margin-top: 10px;
+                font-size: 30px;/*px*/
+                margin-top: 20px;
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
             .action-tag{
-                border: 1px solid #eee;
-                font-size: 9px;
+                border: 1px solid #eee;/*no*/
+                font-size: 18px;/*px*/
                 background-color: #f5a623;
                 color: #fff;
-                padding: 1px 5px;
-                border-radius: 3px;
+                padding: 2px 10px;
+                border-radius: 3px;/*no*/
             }
             .list-rating{
                 .rating-public;
                 display: flex;
                 justify-content: space-around;
-                height: 12px;
+                height: 12px;/*px*/
                 .star-color{
                     position: relative;
                     text-align: center;

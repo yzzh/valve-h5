@@ -32,13 +32,14 @@
 
 <style lang="less" scoped>
     .list-name{
-        font-size: 17px;
+        font-size: 34px;/*px*/
         font-weight: normal;
         color: #111;
         margin: 0;
         text-align: left;
     }
     .list-more{
+        font-size: 28px;/*px*/
         position: absolute;
         right: 0;
         top: 0;

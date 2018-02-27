@@ -93,15 +93,15 @@
     @import '../../base.less';
 
     .bookchild{
-        padding: 0 18px;
+        padding: 0 36px;
         header{
-            font-size: 24px;
+            font-size: 48px;/*px*/
             text-align: left;
-            margin: 16px 0 6px 0;
+            margin: 32px 0 12px 0;
         }
         .bookchild-content{
             li{
-                margin: 20px 0;
+                margin: 40px 0;
                 display: block;
                 width: 100%;
                 overflow: hidden;
@@ -110,13 +110,13 @@
                     .list-poster{
                         float: left;
                         width: 100px;
-                        margin-right: 15px;
+                        margin-right: 30px;
                     }
                     .list-desc{
                         overflow: hidden;
                         text-align: left;
                         .list-title{
-                            font-size: 17px;
+                            font-size: 34px;/*px*/
                             white-space: normal;
                             font-weight: 700;
                         }
@@ -124,12 +124,12 @@
                             display: flex;
                             justify-content: flex-start;
                             .star-color{
-                                padding-right: 4px;
+                                padding-right: 8px;
                             }
                         }
                         .list-info{
-                            font-size: 12px;
-                            padding-top: 6px;
+                            font-size: 24px;/*px*/
+                            padding-top: 12px;
                         }
                     }
                 }

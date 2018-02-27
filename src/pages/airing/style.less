@@ -22,25 +22,25 @@
         display: flex;
         justify-content: space-between;
         .text-title{
-            padding-right: 18px;
+            padding-right: 36px;
             color: #2CA532;
-            font-size: 14px;
+            font-size: 28px;/*px*/
         }
         .text-btn{
-            font-size: 13px;
+            font-size: 26px;/*px*/
             .btn-download{
                 color: #fff;
                 font-weight: 700;
                 background-color: @link-color;
-                padding: 7px 14px;
-                border-radius: 3px;
-                margin-right: 6px;
+                padding: 14px 28px;/*px*/
+                border-radius: 3px;/*no*/
+                margin-right: 12px;
             }
             .btn-open{
                 color: @link-color;
                 border: 1px solid @link-color;
-                padding: 5px 16px;
-                border-radius: 3px;
+                padding: 10px 32px;
+                border-radius: 3px;/*no*/
             }
         }
     }
@@ -48,7 +48,7 @@
 // .status-editor .status-item伪类公用的样式
 .after-public{
     content: '';
-    height: 1px;
+    height: 2px;
     width: 100%;
     background-color: #e8e8e8;
     position: absolute;
@@ -57,12 +57,12 @@
 }
 
 .status-cover{
-    margin: 0 18px;
+    margin: 0 36px;
     .status-editor{
-        padding: 10px 18px;
+        padding: 20px 36px;
         position: relative;
-        margin: 0 -18px; // 这段是为了配合由:after创造出来的border-bottom能够width:100%
-        height: 40px;
+        margin: 0 -36px; // 这段是为了配合由:after创造出来的border-bottom能够width:100%
+        height: 80px;
         line-height: 2;
         color: #aaa;
         &:after{
@@ -76,18 +76,18 @@
             float: right;
         }
         .editor-icon{
-            font-size: 20px;
-            margin-right: 10px;
+            font-size: 40px;/*px*/
+            margin-right: 20px;
             line-height: 2;
         }
     }
     .status-list{
         overflow: hidden;
         .status-item{
-            padding-bottom: 20px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            padding-left: 50px;
+            padding-bottom: 40px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            padding-left: 100px;
             text-align: left;
             position: relative;
             &:after{
@@ -98,33 +98,33 @@
                     .author-avatar{
                         text-decoration: none;
                         float: left;
-                        margin-left: -50px;
+                        margin-left: -100px;
                         img{
-                            width: 40px;
-                            height: 40px;
+                            width: 80px;
+                            height: 80px;
                             border-radius: 50%;
-                            margin-right: 10px;
+                            margin-right: 20px;
                         }
                     }
                 }
                 .author-name{
-                    font-size: 17px;
+                    font-size: 34px;/*px*/
                     line-height: 1;
                     color: #494949;
-                    margin-right: 6px;
+                    margin-right: 12px;
                 }
                 .status-activity{
                     color: #aaa;
                     font-style: normal;
                 }
                 .time{
-                    font-size: 14px;
-                    margin-top: 6px;
+                    font-size: 28px;/*px*/
+                    margin-top: 12px;
                     color: #aaa;
                 }
                 .top-text{
-                    font-size: 17px;
-                    padding-top: 10px;
+                    font-size: 34px;/*px*/
+                    padding-top: 20px;
                     .text-title{
                         color: @link-color;
                     }
@@ -134,8 +134,8 @@
                 }
             }
             .status-img{
-                padding-top: 15px;
-                max-height: 300px;
+                padding-top: 30px;
+                max-height: 600px;
                 overflow: hidden;
                 img{
                     max-width: 100%;
@@ -143,14 +143,14 @@
                 }
             }
             .status-card{
-                padding: 15px;
-                margin: 10px 0 20px 0;
-                border-radius: 2px;
+                padding: 30px;
+                margin: 20px 0 40px 0;
+                border-radius: 2px;/*no*/
                 background-color: #f9f9f9;
                 .card-title{
-                    font-size: 17px;
+                    font-size: 34px;/*px*/
                     color: #494949;
-                    margin-bottom: 5px;
+                    margin-bottom: 10px;
                     font-weight: 500;
                     text-overflow: ellipsis;
                     -webkit-line-clamp: 2;
@@ -160,10 +160,10 @@
 
                 }
                 .card-subtitle{
-                    height: 48px;
+                    height: 96px;
                     position: relative;
                     .subtitle-desc{
-                        font-size: 12px;
+                        font-size: 24px;/*px*/
                         color: #aaa;
                         display: -webkit-box;
                         -webkit-line-clamp: 3;
@@ -172,30 +172,30 @@
                     }
                 }
                 .card-subtitle-img{
-                    padding-right: 90px;
+                    padding-right: 180px;
 
                 }
             }
             .status-bottom{
-                padding-top: 13px;
-                font-size: 14px;
+                padding-top: 26px;
+                font-size: 28px;/*px*/
                 color: #ccc;
                 position: relative;
                 .status-bottom-icon{
-                    margin-right: 10px;
+                    margin-right: 20px;
                     color: #aaa;
                 }
                 .bottom-icon-more{
                     position: absolute;
                     right: 0;
                     color: #aaa;
-                    font-size: 20px;
+                    font-size: 40px;/*px*/
                 }
             }
         }
         .btn-more-airing{
-            padding: 15px 0;
-            font-size: 16px;
+            padding: 30px 0;
+            font-size: 32px;/*px*/
             color: @link-color;
             border: none;
             background-color: #fff;

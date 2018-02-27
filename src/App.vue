@@ -53,17 +53,17 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #494949;
-        margin-top: 51px;
+        margin-top: 100px;
         .header{
-            max-width: 650px;
-            width: 100%;
+            // max-width: 650px;
+            width: 750px;
             position: fixed;
             z-index: 99999;
             top: 0;
             right: 0;
             left: 0;
             text-align: center;
-            border-bottom: 1px solid #f3f3f3;
+            border-bottom: 1px solid #f3f3f3; /*no*/
             background-color: #fff;
             .nav{
                 padding: 10px 18px;
@@ -71,10 +71,10 @@
                 justify-content: space-between;
                 align-items: center;
                 li{
-                    font-size: 16px;
+                    font-size: 30px; /*px*/
                     &:first-child{
                         color: #00b600;
-                        font-size: 23px;
+                        font-size: 44px; /*px*/
                         font-weight: 700;
                     }
                     &:nth-child(2){

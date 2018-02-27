@@ -27,25 +27,25 @@
 
 <style lang="less" scoped>
 .download-app{
-    font-size: 15px;
+    font-size: 30px;/*px*/
     text-align: center;
-    padding: 50px 0 50px 0;
+    padding: 100px 0 100px 0;
     .app-logo{
-        margin: 0 auto 15px auto;
-        font-size: 14px;
+        margin: 0 auto 30px auto;
+        font-size: 28px;/*px*/
         color: #111;
         text-align: left;
         display: inline-block;
         overflow: hidden;
         img{
-            width: 48px;
+            width: 96px;
             float: left;
-            margin-right: 12px;
+            margin-right: 24px;
         }
         .logo-content{
             float: left;
             strong{
-                font-size: 24px;
+                font-size: 48px;/*px*/
                 font-weight: normal;
             }
         }
