@@ -80,7 +80,7 @@
         },
         mounted() {
             let headerHeight = document.getElementById('header').offsetHeight;
-            this.contentHeight = window.screen.height - headerHeight;
+            this.contentHeight = window.screen.height * window.dpr - headerHeight;
             this.loadBookData(1, true);
             this.$refs.childRoot.addEventListener('scroll', this.loadBookData.bind(this), false);
         },

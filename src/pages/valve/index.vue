@@ -1,5 +1,6 @@
 <template>
     <div ref="root" class="index" :style="{ height: contentHeight + 'px'}">
+    <!--<div ref="root" class="index" :style="{ height: 100 + '%'}">-->
         <ul class="quick-page page-ul">
             <li class="page-li" v-for="page in pageList">
                 <a :href="page.href" class="page-a">{{page.title}}</a>

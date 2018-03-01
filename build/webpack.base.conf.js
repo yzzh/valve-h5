@@ -75,10 +75,10 @@ module.exports = {
       {
         test: /\.(css|less)$/,
         use: [
-          'style-loader',
-          'css-loader',
-          'less-loader',
-          'postcss-loader' // 新增代码，使用postcss的loader
+          'style-loader',// 把css字符串加入html中（以下四行执行顺序从下往上）
+          'css-loader', // 把css文件转化成字符串放入js中
+          'postcss-loader', // 新增代码，使用postcss的loader
+          'less-loader' // 把less语法编译成css
         ]
       }
     ]

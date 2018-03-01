@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import DB from './valve'
+import DB from './DB'
 import './global.less'
 
 // 生成全局变量

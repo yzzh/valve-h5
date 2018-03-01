@@ -76,7 +76,7 @@ export default {
     },
     mounted() {
         let headerHeight = document.getElementById('header').offsetHeight;;
-        let contentHeight = window.screen.height - headerHeight;
+        let contentHeight = window.screen.height * window.dpr - headerHeight;
         this.contentHeight = contentHeight;
         this.loadRecommendList(1, true);
         this.$refs.root.addEventListener('scroll',this.loadRecommendList.bind(this), false);

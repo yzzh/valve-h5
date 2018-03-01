@@ -87,7 +87,7 @@
         mounted() {
             // 设置根元素高度（除去header元素）
             let headerHeight = document.getElementById('header').offsetHeight;
-            this.contentHeight = window.screen.height - headerHeight;
+            this.contentHeight = window.screen.height * window.dpr - headerHeight;
             this.loadmovieData(1, true);
             this.$refs.moviechildRoot.addEventListener('scroll',this.loadmovieData.bind(this), false);
         },
